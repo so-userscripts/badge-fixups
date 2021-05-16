@@ -35,6 +35,10 @@ interface Document
     columnStyle.zIndex = isOn ? "unset" : "2";
   };
 
+  const getBadgeItem = (badge: HTMLElement) =>
+    badge.classList.contains(badge_tag) &&
+    badge.closest<HTMLElement>(grid_cell);
+
   badges.forEach((badge) => {
     const badgeitem = badge.closest<HTMLElement>(grid_cell);
     if (!badgeitem) return;
@@ -48,18 +52,12 @@ interface Document
   });
 
   d.addEventListener("mouseover", ({ target }) => {
-    if (!target.classList.contains(badge_tag)) return;
-    const badgeitem = target.closest<HTMLElement>(grid_cell);
-    if (!badgeitem) return;
-
-    toggleOverflow(badgeitem, target, "off");
+    const badgeitem = getBadgeItem(target);
+    badgeitem && toggleOverflow(badgeitem, target, "off");
   });
 
   d.addEventListener("mouseout", ({ target }) => {
-    if (!target.classList.contains(badge_tag)) return;
-    const badgeitem = target.closest<HTMLElement>(grid_cell);
-    if (!badgeitem) return;
-
-    toggleOverflow(badgeitem, target, "on");
+    const badgeitem = getBadgeItem(target);
+    badgeitem && toggleOverflow(badgeitem, target, "on");
   });
 })(window, document);

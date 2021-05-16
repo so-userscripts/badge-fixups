@@ -10,6 +10,8 @@
         badgeStyle.maxWidth = isOn ? "150px" : "unset";
         columnStyle.zIndex = isOn ? "unset" : "2";
     };
+    const getBadgeItem = (badge) => badge.classList.contains(badge_tag) &&
+        badge.closest(grid_cell);
     badges.forEach((badge) => {
         const badgeitem = badge.closest(grid_cell);
         if (!badgeitem)
@@ -22,19 +24,11 @@
         toggleOverflow(badgeitem, badge, "on");
     });
     d.addEventListener("mouseover", ({ target }) => {
-        if (!target.classList.contains(badge_tag))
-            return;
-        const badgeitem = target.closest(grid_cell);
-        if (!badgeitem)
-            return;
-        toggleOverflow(badgeitem, target, "off");
+        const badgeitem = getBadgeItem(target);
+        badgeitem && toggleOverflow(badgeitem, target, "off");
     });
     d.addEventListener("mouseout", ({ target }) => {
-        if (!target.classList.contains(badge_tag))
-            return;
-        const badgeitem = target.closest(grid_cell);
-        if (!badgeitem)
-            return;
-        toggleOverflow(badgeitem, target, "on");
+        const badgeitem = getBadgeItem(target);
+        badgeitem && toggleOverflow(badgeitem, target, "on");
     });
 })(window, document);

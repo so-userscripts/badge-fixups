@@ -4,10 +4,11 @@
     const badge_tag = "badge-tag";
     const badges = [...d.getElementsByClassName(badge_tag)];
     const toggleOverflow = ({ style: columnStyle }, { style: badgeStyle }, state) => {
-        badgeStyle.overflow = state === "on" ? "hidden" : "unset";
-        badgeStyle.verticalAlign = state === "on" ? "bottom" : "unset";
-        badgeStyle.maxWidth = state === "on" ? "150px" : "unset";
-        columnStyle.zIndex = state === "on" ? "unset" : "2";
+        const isOn = state === "on";
+        badgeStyle.overflow = isOn ? "hidden" : "unset";
+        badgeStyle.verticalAlign = isOn ? "bottom" : "unset";
+        badgeStyle.maxWidth = isOn ? "150px" : "unset";
+        columnStyle.zIndex = isOn ? "unset" : "2";
     };
     badges.forEach((badge) => {
         const badgeitem = badge.closest(grid_cell);

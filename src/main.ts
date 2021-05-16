@@ -26,11 +26,13 @@ interface Document
     { style: badgeStyle }: HTMLElement,
     state: "on" | "off"
   ) => {
-    badgeStyle.overflow = state === "on" ? "hidden" : "unset";
+    const isOn = state === "on";
+
+    badgeStyle.overflow = isOn ? "hidden" : "unset";
     //@see https://stackoverflow.com/a/20566810/11407695
-    badgeStyle.verticalAlign = state === "on" ? "bottom" : "unset";
-    badgeStyle.maxWidth = state === "on" ? "150px" : "unset";
-    columnStyle.zIndex = state === "on" ? "unset" : "2";
+    badgeStyle.verticalAlign = isOn ? "bottom" : "unset";
+    badgeStyle.maxWidth = isOn ? "150px" : "unset";
+    columnStyle.zIndex = isOn ? "unset" : "2";
   };
 
   badges.forEach((badge) => {

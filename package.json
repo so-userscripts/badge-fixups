@@ -5,7 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "uglify": "uglifyjs dist/* -c -m -o dist/badgefixups.js",
-    "build": "rm -rf dist && tsc && npm run uglify && rm dist/main.js"
+    "build-min": "tsc && npm run uglify",
+    "build-lib": "tsc --target es2019 --outFile dist/badgefixups-lib.js",
+    "build": "npm run before && npm run build-min && npm run build-lib && npm run after",
+    "after": "rm dist/main.js",
+    "before": "rm -rf dist"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,10 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "target": "ES2019",
-    "skipLibCheck": true
+    "target": "ES5",
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "removeComments": true,
+    "outDir": "dist"
   }
 }

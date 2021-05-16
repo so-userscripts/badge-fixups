@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "uglify": "uglifyjs dist/* -c -m -o dist/badgefixups.js",
+    "build": "rm -rf dist && tsc && npm run uglify && rm dist/main.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/so-userscripts/badge-fixups/issues"
   },
-  "homepage": "https://github.com/so-userscripts/badge-fixups#readme"
+  "homepage": "https://github.com/so-userscripts/badge-fixups#readme",
+  "devDependencies": {
+    "uglify-js": "^3.13.6"
+  }
 }
